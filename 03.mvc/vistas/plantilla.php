@@ -18,19 +18,19 @@
       <ul class="nav nav-justified py-2 nav-pills d-fle-top">
     
         <li class="nav-item">
-              <a class="nav-link " href="registro.html">Registro</a>
+              <a class="nav-link " href="index.php?pagina=registro">Registro</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link " href="ingreso.html">Ingreso</a>
+              <a class="nav-link " href="index.php?pagina=ingreso">Ingreso</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="index.html">Inicio</a>
+              <a class="nav-link active" href="index.php?pagina=inicio">Inicio</a>
             </li>
 
               <li class="nav-item">
-            <a class="nav-link" href="#">Salir</a>
+            <a class="nav-link" href="index.php?pagina=salir">Salir</a>
             </li>
 
       </ul>
@@ -44,6 +44,11 @@
         <div class="container py-5 ">
         
         <?php
+          
+
+
+
+
           include "paginas/inicio.php";
         ?>
 
