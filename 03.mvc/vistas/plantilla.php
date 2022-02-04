@@ -16,7 +16,19 @@
   <div class="container-fluid bg-light">
     <div class="container">
       <ul class="nav nav-justified py-2 nav-pills d-fle-top">
+
+                if
+
     
+
+
+              
+
+
+
+
+
+
         <li class="nav-item">
               <a class="nav-link " href="index.php?pagina=registro">Registro</a>
             </li>
@@ -44,12 +56,24 @@
         <div class="container py-5 ">
         
         <?php
-          
+              /* isset — Determina si una variable está definida y no es null */
+              if(isset($_GET["pagina"])){
+
+                  if($_GET["pagina"] == "registro" ||
+                     $_GET["pagina"] == "ingreso" ||
+                     $_GET["pagina"] == "inicio" ||
+                     $_GET["pagina"] == "salir") {
+                      
+                      include "paginas/".$_GET["pagina"].".php";
+                    
+                    }
 
 
+              }else{
+                  include "paginas/registro.php";
+              }
 
-
-          include "paginas/inicio.php";
+              
         ?>
 
 
@@ -60,4 +84,3 @@
 
 </body>
 </html>
-

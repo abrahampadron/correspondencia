@@ -1,5 +1,5 @@
 
-
+<h1>Inicio</h1>
 
 
   <table class="table table-striped">
