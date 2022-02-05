@@ -11,8 +11,10 @@
             el mismo fichero podría ser incluido y evaluado más de una vez durante una ejecución particular de un script, así que en este caso, puede ser de ayuda para evitar problemas como la redefinición de funciones, reasignación de valores de variables, etc.
          */
 
-        require_once "controladores/plantilla.contralador.php";
+        require_once "controladores/plantilla.controlador.php";
+        require_once "controladores/formularios.controlador.php";
 
         $plantilla =new ControladorPlantilla();
         $plantilla -> ctlTraerPlantilla();
+
 
