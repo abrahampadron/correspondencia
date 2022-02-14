@@ -7,21 +7,46 @@
 
             // REGISTRO
 
-        static public function mdlRegistro(){
-            if(isset($_POST["registroNombre"])){
+        static public function mdlRegistro($tabla, $datos){
 
-                $tabla = "registros";
-                $datos = array("nombre" => $_POST["registroNombre"], "email"  => $_POST["registroEmail"],"password" => $_POST["registropassword"]);   
-                
-               
+            /*declaracion*/
+            $stmt = Conexion::conectar() -> prepare("INSERT INTO $tabla(nombre, email, password) VALUES
+             (:nombre, :email, :password)" );   
+                  
+                  // Vincula una variable de PHP a un parámetro de sustitución con nombre o 
+                    // de signo de interrogación correspondiente de la sentencia SQL que fue usada
+                    //  para preparar la sentencia. A diferencia de PDOStatement::bindValue(),
+                    //   la variable es vinculada como una referencia y solamente será evaluada
+                    //    en el momento en el que se llame a PDOStatement::execute().
 
+             $stmt-> bindParam(":nombre",   $datos  ["nombre"],  PDO::PARAM_STR);
+             $stmt-> bindParam(":email",    $datos   ["email"],   PDO::PARAM_STR);
+             $stmt-> bindParam(":password", $datos["password"],PDO::PARAM_STR);
+             
+             if($stmt -> execute()){
+
+                return "ok";
+            
+            }else{
+
+                print_r(Conexion::conectar()->errorInfo());
             }
             
-
-
+            $stmt -> close();
+            $stmt -> null;
+           
         }
+              //  Seleccionar Registros
 
+              static public function mdlSeleccionarRegistros($tabla){
+                /*declaracion*/
+                $stmt = Conexion::conectar() -> prepare("SELECT * FROM  $tabla"); 
+                
+                $stmt -> execute(); 
+                
+                return $stmt -> fetchall();
 
-
+              }
+              
+              
     }
-
