@@ -54,19 +54,16 @@
                   $stmt = Conexion::conectar() -> prepare("SELECT *,DATE_FORMAT(fecha, '%d/%m/%y') AS fecha
                             FROM  $tabla where  $item = :$item "); 
                 
+                $stmt-> bindParam(":".$item, $valor, PDO::PARAM_STR);
+              
 
-
-                
                   $stmt -> execute(); 
                   
-                  return $stmt -> fetchAll();
-
+                  return $stmt -> fetch();
                   
                 }
                 
                 
-               
-
                 $stmt -> close();
                 $stmt -> null;
 
