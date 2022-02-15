@@ -13,8 +13,13 @@
 
         require_once "controladores/plantilla.controlador.php";
         require_once "controladores/formularios.controlador.php";
+        require_once "modelos/formularios.modelo.php";
+     
+        
+       /*  $conexion = conexion::Conectar();
+        echo print_r($conexion); */
 
-        $plantilla =new ControladorPlantilla();
-        $plantilla -> ctlTraerPlantilla();
+        $plantilla = new ControladorPlantilla();
+        $plantilla -> ctrTraerPlantilla();
 
 
