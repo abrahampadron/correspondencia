@@ -32,8 +32,8 @@
                 print_r(Conexion::conectar()->errorInfo());
             }
             
-            $stmt -> close();
-            $stmt -> null;
+           // $stmt -> close();
+            //$stmt -> null;
            
             }
           
@@ -64,8 +64,8 @@
                 }
                 
                 
-                $stmt -> close();
-                $stmt -> null;
+               // $stmt -> close();
+               // $stmt -> null;
 
               }
               
