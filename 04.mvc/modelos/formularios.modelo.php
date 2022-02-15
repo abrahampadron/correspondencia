@@ -19,9 +19,9 @@
                     //   la variable es vinculada como una referencia y solamente será evaluada
                     //    en el momento en el que se llame a PDOStatement::execute().
 
-             $stmt-> bindParam(":nombre",   $datos  ["nombre"],  PDO::PARAM_STR);
+             $stmt-> bindParam(":nombre",   $datos  ["nombre"],   PDO::PARAM_STR);
              $stmt-> bindParam(":email",    $datos   ["email"],   PDO::PARAM_STR);
-             $stmt-> bindParam(":password", $datos["password"],PDO::PARAM_STR);
+             $stmt-> bindParam(":password", $datos["password"],   PDO::PARAM_STR);
              
              if($stmt -> execute()){
 
@@ -35,18 +35,42 @@
             $stmt -> close();
             $stmt -> null;
            
-        }
-              //  Seleccionar Registros
+            }
+          
+                
+          // Seleccionar Registros
 
-              static public function mdlSeleccionarRegistros($tabla){
+            static public function mdlSeleccionarRegistros($tabla, $item, $valor){
                 /*declaracion*/
-                $stmt = Conexion::conectar() -> prepare("SELECT * FROM  $tabla"); 
+                if($item == null && $valor == null){
+
+                  $stmt = Conexion::conectar() -> prepare("SELECT *,DATE_FORMAT(fecha, '%d/%m/%y') AS fecha FROM  $tabla"); 
                 
-                $stmt -> execute(); 
+                  $stmt -> execute(); 
+                  
+                  return $stmt -> fetchAll();
+
+                }  else{
+                  $stmt = Conexion::conectar() -> prepare("SELECT *,DATE_FORMAT(fecha, '%d/%m/%y') AS fecha
+                            FROM  $tabla where  $item = :$item "); 
                 
-                return $stmt -> fetchall();
+
+
+                
+                  $stmt -> execute(); 
+                  
+                  return $stmt -> fetchAll();
+
+                  
+                }
+                
+                
+               
+
+                $stmt -> close();
+                $stmt -> null;
 
               }
               
               
-    }
+            }
