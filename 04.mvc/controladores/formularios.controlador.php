@@ -29,7 +29,7 @@
         
             /* Seleccionar Registros  */
 
-                static public function ctrSeleccionarRegistros(){
+                static public function ctrSeleccionarRegistros($item, $valor){
 
                     $tabla = "registros";
 
@@ -56,7 +56,7 @@
                 $_SESSION["validarIngreso"]= "ok";
 
 
-              echo '<script>
+                    echo '<script>
 
                             if ( window.history.replaceState){
 
